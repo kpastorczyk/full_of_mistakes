@@ -1,0 +1,98 @@
+<h2>
+  Your task: Fix or implement all the endpoints linked below.
+</h2>
+<p>
+  Code sources of this super simple application is full of BAD CODE or BAD PRACTICES.
+  Your goal is to fix it.
+</p>
+<p>
+  You will find instructions and tips in codebase's comments (or the endpoints' specs).
+  Use your own judgement of what is important to be fixed and how should they be implemented.
+  <br/>
+  Have a look at ProductsController and its spec (products_controller_spec.rb).
+  Make sure all endpoints there are working properly.
+</p>
+
+<ol>
+  <li>
+    <a href="/products/seed?category=Guitars">GET products/seed guitars </a>
+    (or <a href="/products/seed?category=grocery">GET products/seed groceries </a>)
+  </li>
+  <li><a href="/products.json">GET all products (as JSON)</a></li>
+  <li><a href="/products.html">GET all products (as HTML)</a> (we want simple page with HTML
+    products table here)
+  </li>
+  <li><a href="/products/1">GET products/ID</a> - please hide secret_code attribute and timestamps
+    (see source code and specs for details) !
+  </li>
+  <li><a href="/products/destroy">DELETE products/destroy all products</a> (TODO fix link)</li>
+  <li>
+    <form action="/products" method="post">
+      Name:<input type="text" name="product[name]" value="iPad mini">
+      Price:<input type="text" name="product[price]" value="100.00">
+      Category:<input type="text" name="product[category]" value="electronics">
+      <input type="submit" value="create product">
+    </form>
+    <a href="/products/create"></a></li>
+  </li>
+  <li><a href="/products/uniq_categories">GET products/uniq_categories JSON</a> just names of ALL
+    product's categories as JSON array)
+  </li>
+  <li>
+    <a href="/products/expensive_categories">GET products/expensive_categories</a> similar as above,
+    but limited to expensive products (see details in action's source code coments)
+  </li>
+  <li>
+    <a href="/products/cached/1">GET products/cached/ID</a> let this url do the same as show action, but make it cached.
+    Ensure cache is invalidated when product is updated.
+    Decide yourself which application level to cache at.
+  </li>
+</ol>
+
+<h2>
+  While working on the endpoints above:
+</h2>
+<ul>
+
+  <li>Improve the source code!
+    <ul>
+      <li>
+        The code of this application is <strong>full of BAD practices</strong> and poor quality
+        code.
+        Improve the code where you think it is necessary.
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    Improve DB design
+    <ul>
+      <li>
+        For simplification of the example database is a default RoR's sqlite3.
+        Do not worry about the choice. Assume it is fine for our excercise. Do not change it.
+
+      </li>
+      <li>
+        DB structure is just 1 flat table. Feel free to change DB structure etc where you think it makes
+        sense for the needs of the excercise.
+      </li>
+    </ul>
+
+  </li>
+  <li>
+    FIX tests + implement missing ones.
+    <ul>
+      <li>
+        Make sure all tests are passing and are useful.
+      </li>
+      <li>
+        You can find all the tests in "specs" folder (feel free to use any other test library if this is
+        your preference).
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2> IGNORE THE FRONT-END code here !</h2>
+This is an excercise related to your backend skills. Do not worry about front-end related code at all.
+

@@ -52,7 +52,7 @@ RSpec.describe ProductsController, type: :controller do
       expect(response.body).to eq '[]'
     end
 
-    xit 'responds with JSON array representing unique category names (as Strings)' do
+    it 'responds with JSON array representing unique category names (as Strings)' do
       Product.create(name: 'Milk', category: 'grocery')
       get :uniq_categories
       expect(response.body).to eq '["grocery"]'

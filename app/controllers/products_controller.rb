@@ -40,9 +40,7 @@ class ProductsController < ApplicationController
   end
 
   def uniq_categories
-    # TODO return JSON with an array of all uniq Product.category names in alphabetical order
-    # i.e. ['cars', 'grocery', 'guitars']
-    render json: ['cars']
+    render json: Product.uniq_categories
   end
 
   def expensive_categories

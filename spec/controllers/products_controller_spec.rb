@@ -60,20 +60,14 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe 'GET expensive_categories' do
-    # TODO return JSON with category names, but only those containing at least 2 products with price above 1000.00.
-    # i.e. ['cars']. But no 'grocery' nor Guitars (there is only 1 guitar with price above 1000)
-    # Product name, Price, Category
-    # Milk, 0.81 USD, grocery
-    # Butter, 1.51 USD, grocery
-    # Ford Focus, 20000 USD, cars
-    # BMW X7, 95.000 USD, cars
-    # Fender Stratocaster custom, 1200 USD, guitars
-    # Fender Squier, 300 USD, guitars
     it 'responds with empty JSON array when no products in DB' do
+      Product.create(id: 144, name: "Gibson Les Paul 1968", category: "Guitars", price: 2345.21, secret_code: SecureRandom.hex(64))
+      Product.create(id: 145, name: "Gibson Les Paul", category: "Guitars", price: 1345.21, secret_code: SecureRandom.hex(64))
       get :expensive_categories
-      expect(response.body).to eq '["cars"]'
+      expect(response.body).to eq '["Guitars"]'
     end
   end
+
   describe 'POST create' do
     it 'adds product' do
       post :show, product: { name: 'iWatch', price: 123 }

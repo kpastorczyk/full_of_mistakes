@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'products/seed', controller: 'products', action: 'seed'
+  get 'products/expensive_categories', controller: 'products', action: 'expensive_categories'
   resources :products do
     collection do
       get 'uniq_categories'

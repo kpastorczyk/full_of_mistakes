@@ -44,16 +44,6 @@ class ProductsController < ApplicationController
   end
 
   def expensive_categories
-    # TODO return JSON with category names, but only those containing to at least 2 products with price above 1000.00.
-    # i.e. ['cars']. But no 'grocery' nor Guitars (there is only 1 guitar with price above 1000)
-    # Product name, Price, Category
-    # Milk, 0.81 USD, grocery
-    # Butter, 1.51 USD, grocery
-    # Ford Focus, 20000 USD, cars
-    # BMW X7, 95.000 USD, cars
-    # Fender Stratocaster custom, 1200 USD, guitars
-    # Fender Squier, 300 USD, guitars
-    @expensive_products = Product.where('1=1').all
-    render json: ['cars', 'guitars']
+    render json: Product.get_categories_at_least_2_products_above(1000.00)
   end
 end

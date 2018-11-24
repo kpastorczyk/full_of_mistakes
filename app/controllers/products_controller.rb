@@ -6,8 +6,12 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all.to_json
-    render json: @products
+    @products = Product.all
+
+    respond_to do |format|
+      format.html
+      format.json{ render json: @products }
+    end
   end
 
   def seed

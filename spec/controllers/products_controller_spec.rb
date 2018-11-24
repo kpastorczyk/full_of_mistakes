@@ -1,6 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe ProductsController, type: :controller do
+  describe 'GET index' do
+    it 'should return json list of products' do
+      get :index, format: :json
+
+      expect(response).to have_http_status(:ok)
+      expect(response.content_type).to eq('application/json')
+      expect(JSON(response.body).count).to eq 2
+    end
+
+    it 'should return html list of products' do
+      get :index
+
+      expect(response).to have_http_status(:ok)
+      expect(response.content_type).to eq('text/html')
+    end
+  end
+
   describe 'GET show' do
     it 'TODO some meaningfull description for the endpoint' do
       Product.create(id: 123, name: 'Milk', secret_code: 'secret code 123', price: 10.1234)

@@ -6,12 +6,12 @@
     <td>Price (rounded to 3! decimal digits)</td>
   </tr>
   </thead>
-  <% Product.all.each do |product| %>
+  <% @products.each do |product| %>
     <tbody>
     <tr>
-      <td><% product.id %></td>
-      <td><% product.name %></td>
-      <td><% product.price %></td>
+      <td><%= product.id %></td>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
     </tr>
     </tbody>
   <% end %>

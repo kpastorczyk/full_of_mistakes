@@ -25,28 +25,18 @@ RSpec.describe ProductsController, type: :controller do
 
   describe 'GET show' do
     it 'TODO some meaningfull description for the endpoint' do
-      # Product.create(id: 123, name: 'Milk', secret_code: 'secret code 123', price: 10.1234)
       get :show, params: { id: 123 }
       # TODO add useful expectation
     end
 
     it 'response does not contain secret_code' do
-      pending('I\'ll do it tomorrow')
-      # Product.create(id: 123, name: 'Milk', secret_code: 'secret code 123', price: 10.1234)
       get :show, params: { id: 123 }
-      expect(response.body.index('secret code 123')).to be_nil
+      expect(response.body.index('secret_code')).to be_nil
     end
 
     it 'responds with price formatted as $123.45 (3 digits after comma!)' do
-      # Product.create(id: 123, name: 'Milk', secret_code: 'secret code 123', price: "10.12345")
       get :show, params: { id: 123 }
-      expect(response.body.index('10.123,')).to be_positive
-    end
-
-    it 'responds with ' do
-      # Product.create(id: 123, name: 'Milk', secret_code: 'secret code 123', price: "10.12345")
-      get :show, params: { id: 123 }
-      expect(response.body.index('10.123,')).to be_positive
+      expect(response.body.index('10.123')).to be_positive
     end
   end
 

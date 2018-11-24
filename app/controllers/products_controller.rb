@@ -29,14 +29,13 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(params[:product])
-    if @product.name.blank?
-      raise Exception, 'name can not be empty'
-    else
-      @product
-    end
+    @product = Product.new(product_params)
 
-    head :ok
+    if @product.save
+      render json: @product
+    else
+      render json: @product.errors
+    end
   end
 
   def uniq_categories
@@ -45,5 +44,11 @@ class ProductsController < ApplicationController
 
   def expensive_categories
     render json: Product.get_categories_at_least_2_products_above(1000.00)
+  end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :price)
   end
 end

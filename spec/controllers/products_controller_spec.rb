@@ -53,7 +53,7 @@ RSpec.describe ProductsController, type: :controller do
     end
 
     it 'responds with JSON array representing unique category names (as Strings)' do
-      Product.create(name: 'Milk', category: 'grocery')
+      Product.create(name: 'Milk', category: 'grocery', price: 1000)
       get :uniq_categories
       expect(response.body).to eq '["grocery"]'
     end
@@ -69,17 +69,19 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe 'POST create' do
-    it 'adds product' do
-      post :show, product: { name: 'iWatch', price: 123 }
-      # expect...
+    it 'should add product' do
+      post :create, params: { product: { name: 'iWatch', price: 123 } }
+      expect(response.body.index('name')).to be_positive
     end
 
-    it '... empty name...' do
-      pending 'does not save product without a name'
+    it 'should return error when name is empty' do
+      post :create, params: { product: { name: '', price: 123 } }
+      expect(response.body).to include("can't be blank")
     end
 
-    it 'adds product' do
-      pending 'does not save product with negative price'
+    it 'should return error' do
+      post :create, params: { product: { name: 'iWatch', price: -123 } }
+      expect(response.body).to include("must be greater than 0")
     end
   end
 
